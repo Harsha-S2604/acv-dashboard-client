@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 const Barchart = (props) => {
     const ref = useRef();
     const margin = { top: 20, right: 40, bottom: 30, left: 50 }
-    const width = 1300 - margin.left - margin.right
+    const width = 800 - margin.left - margin.right
     const height = 500 - margin.top - margin.bottom
 
     const getaxisData = () => {
@@ -17,10 +17,8 @@ const Barchart = (props) => {
         const xAxisDomain = []
         const yAxisDomain = [
             0, 
-            d3.max(data, d => d.acv)
+            Math.max(...Object.values(props.acvByQuarter))
         ]
-
-        console.log(yAxisDomain)
 
         for (let i = 0; i < data.length; i++) {
             const d = data[i]
@@ -67,7 +65,7 @@ const Barchart = (props) => {
 
     return (
         <>
-            <svg ref={ref} style={{ "padding": "100px" }}
+            <svg ref={ref} style={{ "padding": "40px" }}
                 width={width + margin.left + margin.right}
                 height={height + margin.top + margin.bottom}>
             </svg >
