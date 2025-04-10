@@ -7,28 +7,27 @@ const Barchart = (props) => {
     const width = 800 - margin.left - margin.right
     const height = 500 - margin.top - margin.bottom
 
-    const getaxisData = () => {
-        let count = 0
+    const getMaxAcv = () => {
+        const { acvData } = props
 
-        const { data } = props
-
-        const freqMap = {}
-
-        const xAxisDomain = []
-        const yAxisDomain = [
-            0, 
-            Math.max(...Object.values(props.acvByQuarter))
-        ]
-
-        for (let i = 0; i < data.length; i++) {
-            const d = data[i]
-            if (!freqMap[d.closed_fiscal_quarter]) {
-                freqMap[d.closed_fiscal_quarter] = 1
-                count += 1
-                xAxisDomain.push(d.closed_fiscal_quarter)
+        let max = 0;
+        for (const acv in acvData) {
+            const total = acvData[acv]["total"]
+            if (total.acv > max) {
+                max = total.acv
             }
         }
 
+        return max
+    }
+
+    const getaxisData = () => {
+        const { acvData } = props
+
+        const maxAcv = getMaxAcv()
+
+        const xAxisDomain = Object.keys(acvData)
+        const yAxisDomain = [0, maxAcv]
 
         return {
             xAxisDomain,
