@@ -27,12 +27,26 @@ const Barchart = (props) => {
         const maxAcv = getMaxAcv()
 
         const xAxisDomain = Object.keys(acvData)
-        const yAxisDomain = [0, maxAcv]
+        const yAxisDomain = [0, maxAcv + 200000]
 
         return {
             xAxisDomain,
             yAxisDomain,
         }
+    }
+
+    const drawBar = (svgRef, xScale, yScale) => {
+        const fiscalYears = Object.keys(props.acvData)
+        svgRef.selectAll(".bar")
+            .data(fiscalYears)
+            .enter()
+            .append("rect")
+            .attr("class", "bar")
+            .attr("x", d => xScale(d) + margin.left + xScale.bandwidth() * 0.2)
+            .attr("y", d => yScale(props.acvData[d].total.acv) + margin.top)
+            .attr("width",  xScale.bandwidth() * 0.6)
+            .attr("height", d => height - yScale(props.acvData[d].total.acv))
+            .attr("fill", "#4A90E2")
     }
 
     useEffect(() => {
@@ -47,8 +61,8 @@ const Barchart = (props) => {
 
         const xAxis = d3.axisBottom(xScale)
         const yAxis = d3.axisLeft(yScale)
-                    .tickValues(yTicks)
-                    .tickFormat(d3.format("~s"))
+            .tickValues(yTicks)
+            .tickFormat(d3.format("~s"))
 
         svg.append("g")
             .call(xAxis)
@@ -59,6 +73,9 @@ const Barchart = (props) => {
             .call(yAxis)
             .attr("transform", `translate(${margin.left},${margin.top})`)
             .style('font-size', '12px')
+
+        
+        drawBar(svg, xScale, yScale)
 
     }, []);
 
