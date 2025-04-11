@@ -5,6 +5,7 @@ import Box from '@mui/material/Box'
 import Barchart from './Barchart';
 import utilities from '../../utilities';
 import Piechart from './Pierchart';
+import CTable from './CTable';
 
 const typeKey = {
     "Customer Type": "Cust_Type",
@@ -26,7 +27,8 @@ const ACVDashborad = (props) => {
             justifyContent="center"
             alignItems="center"
             gap={2}
-            height="100vh"
+            height="100%"
+            style={{ marginBottom: "100px"}}
         >
             <Card sx={{ boxShadow: 3 }}>
                 <CardActionArea>
@@ -42,23 +44,19 @@ const ACVDashborad = (props) => {
                         >
                             {`Won ACV mix by ${props.type}`}
                         </Typography>
-                        <Stack
-                            spacing={{ xs: 1, sm: 2 }}
-                            direction="row"
-                            useFlexGap
-                        >
-                            <svg id="d3-chart" style={{ "padding": "40px" }}
-                                width={width + margin.left + margin.right + 600}
-                                height={height + margin.top + margin.bottom + 200}>
-                                <g id="barchart"  transform={`translate(${margin.left}, ${margin.top})`}>
-                                    <Barchart data={props.data} typeKey={typeKey[props.type]} acvData={acvData} width={width} height={height} margin={margin} />
-                                </g>
-                                <g id="piechart"  transform={`translate(${width + margin.left + 100}, ${margin.top})`}>
-                                    <Piechart data={props.data} typeKey={typeKey[props.type]} acvData={acvData} width={width} height={height} margin={margin} />
-                                </g>
-                            </svg>
-                            
-                        </Stack>
+
+                        <svg id="d3-chart"
+                            width={width + margin.left + margin.right + 600}
+                            height={height + margin.top + margin.bottom + 200}>
+                            <g id="barchart" transform={`translate(${margin.left}, ${margin.top})`}>
+                                <Barchart data={props.data} typeKey={typeKey[props.type]} acvData={acvData} width={width} height={height} margin={margin} />
+                            </g>
+                            <g id="piechart" transform={`translate(${width + margin.left + 100}, ${margin.top})`}>
+                                <Piechart data={props.data} typeKey={typeKey[props.type]} acvData={acvData} width={width} height={height} margin={margin} />
+                            </g>
+                        </svg>
+                        
+                        <CTable acvData={acvData} typeKey={typeKey[props.type]} data={props.data} />
                     </CardContent>
                 </CardActionArea>
             </Card>

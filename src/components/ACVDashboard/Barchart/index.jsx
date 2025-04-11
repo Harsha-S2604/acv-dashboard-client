@@ -9,6 +9,7 @@ const Barchart = (props) => {
 
         let max = 0;
         for (const acv in acvData) {
+            if (acv == "total") continue
             const total = acvData[acv]["total"]
             if (total.acv > max) {
                 max = total.acv
@@ -23,7 +24,7 @@ const Barchart = (props) => {
 
         const maxAcv = getMaxAcv()
 
-        const xAxisDomain = Object.keys(acvData)
+        const xAxisDomain = Object.keys(acvData).filter(item => item !== "total")
         const yAxisDomain = [0, maxAcv + 200000]
 
         return {

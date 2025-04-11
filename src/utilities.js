@@ -17,6 +17,7 @@ const utilities = {
 
     getACVData: (data, key = '') => {
         const acvData = {}
+        const acvTotal = {}
 
         for (let i = 0; i < data.length; i++) {
             const d = data[i]
@@ -47,8 +48,29 @@ const utilities = {
                 acvData[quarter]["total"].count += d.count
                 acvData[quarter]["total"].acv += d.acv
             }
+
+            if (!acvTotal[type]) {
+                acvTotal[type] = {
+                    count: d.count,
+                    acv: d.acv,
+                }
+            } else {
+                acvTotal[type].count += d.count
+                acvTotal[type].acv += d.acv
+            }
+
+            if (!acvTotal["total"]) {
+                acvTotal["total"] = {
+                    count: d.count,
+                    acv: d.acv
+                }
+            } else {
+                acvTotal["total"].count += d.count
+                acvTotal["total"].acv += d.acv
+            }
         }
 
+        acvData["total"] = acvTotal
         return acvData
     }
 }
