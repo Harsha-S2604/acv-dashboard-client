@@ -24,3 +24,12 @@ yarn
 ```console
 yarn dev
 ```
+
+## Output
+![image](https://github.com/user-attachments/assets/c24f5570-9c5a-4baf-8919-aa7324894098)
+![image](https://github.com/user-attachments/assets/1e16d51e-dbe5-48a5-9dce-f7fa6dfb970d)
+![image](https://github.com/user-attachments/assets/97bd02e7-031d-47a4-8081-dc6af2191a50)
+![image](https://github.com/user-attachments/assets/802b7260-5bc0-4004-a233-5ad4aa0f0adf)
+
+
+
