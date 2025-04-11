@@ -54,7 +54,7 @@ const ACVDashborad = (props) => {
                                     <Barchart data={props.data} typeKey={typeKey[props.type]} acvData={acvData} width={width} height={height} margin={margin} />
                                 </g>
                                 <g id="piechart"  transform={`translate(${width + margin.left + 100}, ${margin.top})`}>
-                                    <Piechart data={props.data} acvData={acvData} width={width} height={height} margin={margin} />
+                                    <Piechart data={props.data} typeKey={typeKey[props.type]} acvData={acvData} width={width} height={height} margin={margin} />
                                 </g>
                             </svg>
                             
