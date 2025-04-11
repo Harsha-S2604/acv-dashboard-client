@@ -6,13 +6,21 @@ This repo uses the react for UI, vite for build, Material UI a css framework
 ## Steps to run the app
 
 ### 1. clone the project
-`git clone git@github.com:Harsha-S2604/acv-dashboard-client.git`
+```console
+git clone git@github.com:Harsha-S2604/acv-dashboard-client.git
+```
 
 ### 2. change directory
-`cd acv-dashboard-client`
+```console
+cd acv-dashboard-client
+```
 
 ### 3. install dependencies
-`yarn`
+```console
+yarn
+```
 
 ### 4. run app
-`yarn dev`
+```console
+yarn dev
+```
