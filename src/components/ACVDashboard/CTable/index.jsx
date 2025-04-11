@@ -25,7 +25,7 @@ const CTable = (props) => {
 
     return (
         <TableContainer component={Paper}>
-            <Table aria-label="fiscal data table">
+            <Table aria-label="fiscal data table" size="small">
                 <TableHead>
                     <TableRow>
                         <TableCell align="center" style={{ fontWeight: "600" }} rowSpan={1}>
@@ -70,7 +70,7 @@ const CTable = (props) => {
                             }
                             return (
                                 <React.Fragment>
-                                    <TableRow>
+                                    <TableRow sx={{ height: 32 }}>
                                         <TableCell align="center">{type}</TableCell>
                                         {tableConfig.headings.map((heading) => {
                                             const count = props.acvData[heading][type]?.count || 0
@@ -96,7 +96,7 @@ const CTable = (props) => {
                             )
                         })
                     }
-                    <TableRow>
+                    <TableRow sx={{ height: 32 }}>
                         <TableCell align="center" style={{ fontWeight: "600" }}>Total</TableCell>
 
                         {tableConfig.headings.map((heading) => {
