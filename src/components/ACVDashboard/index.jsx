@@ -37,7 +37,7 @@ const ACVDashborad = (props) => {
                         >
                             {`Won ACV mix by ${props.type}`}
                         </Typography>
-                        <Barchart data={props.data} acvByQuarter={acvByQuarter} acvData={acvData} />
+                        <Barchart data={props.data} typeKey={typeKey[props.type]} acvByQuarter={acvByQuarter} acvData={acvData} />
                     </CardContent>
                 </CardActionArea>
             </Card>
