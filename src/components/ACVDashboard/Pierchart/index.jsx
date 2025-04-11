@@ -65,7 +65,7 @@ const Piechart = (props) => {
             .attr("dominant-baseline", "middle")
             .attr("x", 0)
             .attr("y", 12)
-            .text(`$${total.toLocaleString()}`)
+            .text(`$${Math.round(total).toLocaleString()}`)
             .style("font-size", "14px")
             .style("fill", "#666")
 
