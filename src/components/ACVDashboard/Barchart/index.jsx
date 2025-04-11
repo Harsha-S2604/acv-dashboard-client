@@ -143,7 +143,7 @@ const Barchart = (props) => {
 
     return (
         <>
-            <svg ref={ref} style={{ "padding": "40px" }}
+            <svg id="barchart" ref={ref} style={{ "padding": "40px" }}
                 width={width + margin.left + margin.right + 500}
                 height={height + margin.top + margin.bottom + 100}>
             </svg >
