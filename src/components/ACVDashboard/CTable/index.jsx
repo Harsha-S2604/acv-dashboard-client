@@ -23,6 +23,8 @@ const CTable = (props) => {
 
     const tableConfig = getTableConfig()
 
+    console.log("props.data.type", props)
+
     return (
         <TableContainer component={Paper}>
             <Table aria-label="fiscal data table" size="small">
@@ -45,7 +47,7 @@ const CTable = (props) => {
                     </TableRow>
                     <TableRow>
                         <TableCell style={{ fontWeight: "600" }} align="center">
-                            {typeHeaders[props.typeKey]}
+                            {props.type}
                         </TableCell>
                         {tableConfig.headings?.map((_, idx) => (
                             <React.Fragment key={`subhead-${idx}`}>

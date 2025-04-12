@@ -1,18 +1,29 @@
-import ACVDashborad from "./components/ACVDashboard"
+import { useEffect, useState } from "react"
 
-import customer_type from "../data/customer_type.json"
-import team from "../data/team.json"
-import acv_range from "../data/acv_range.json"
-import acc_industry from "../data/acc_industry.json"
+import ACVDashborad from "./components/ACVDashboard"
+import acvApi from "./api/acv"
 
 function App() {
+  const [acvData, setAcvData] = useState([])
+
+  useEffect(() => {
+    (async () => {
+      const response = await acvApi.getAcv()
+      const acvData = JSON.parse(response.data)
+      setAcvData(acvData)
+    }
+    )();
+  }, [])
   return (
     <>
       <div>
-        <ACVDashborad type="Customer Type" data={customer_type} />
-        <ACVDashborad type="Team" data={team} />
-        <ACVDashborad type="ACV Range" data={acv_range} />
-        <ACVDashborad type="Account Industry" data={acc_industry} />
+        {
+          acvData.map((acv) => {
+            return (
+              <ACVDashborad type={acv.type} data={acv.acvData} />
+            )
+          })
+        }
       </div>
     </>
   )

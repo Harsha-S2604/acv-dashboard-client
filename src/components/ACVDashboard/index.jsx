@@ -15,7 +15,7 @@ const typeKey = {
 }
 
 const ACVDashborad = (props) => {
-    const acvData = utilities.getACVData(props.data, typeKey[props.type])
+    const acvData = utilities.getACVData(props.data)
 
     const margin = { top: 20, right: 40, bottom: 30, left: 50 }
     const width = 800 - margin.left - margin.right
@@ -49,14 +49,14 @@ const ACVDashborad = (props) => {
                             width={width + margin.left + margin.right + 600}
                             height={height + margin.top + margin.bottom + 200}>
                             <g id="barchart" transform={`translate(${margin.left}, ${margin.top})`}>
-                                <Barchart data={props.data} typeKey={typeKey[props.type]} acvData={acvData} width={width} height={height} margin={margin} />
+                                <Barchart data={props.data} type={props.type} acvData={acvData} width={width} height={height} margin={margin} />
                             </g>
                             <g id="piechart" transform={`translate(${width + margin.left + 100}, ${margin.top})`}>
-                                <Piechart data={props.data} typeKey={typeKey[props.type]} acvData={acvData} width={width} height={height} margin={margin} />
+                                <Piechart data={props.data} type={props.type} acvData={acvData} width={width} height={height} margin={margin} />
                             </g>
                         </svg>
                         
-                        <CTable acvData={acvData} typeKey={typeKey[props.type]} data={props.data} />
+                        <CTable acvData={acvData} type={props.type} data={props.data} />
                     </CardContent>
                 </CardActionArea>
             </Card>

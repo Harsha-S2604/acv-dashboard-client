@@ -15,7 +15,7 @@ const utilities = {
         return quarterAcv
     },
 
-    getACVData: (data, key = '') => {
+    getACVData: (data) => {
         const acvData = {}
         const acvTotal = {}
 
@@ -23,7 +23,7 @@ const utilities = {
             const d = data[i]
 
             const quarter = d.closed_fiscal_quarter
-            const type = d[key]
+            const type = d.type
 
             if (!acvData[quarter]) {
                 acvData[quarter] = {}

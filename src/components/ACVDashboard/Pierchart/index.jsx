@@ -14,7 +14,7 @@ const Piechart = (props) => {
             .outerRadius(radius - 1)
 
         const series = d3.stack()
-            .keys(d3.union(props.data.map(d => d[props.typeKey])))
+            .keys(d3.union(props.data.map(d => d.type)))
             .value((mapVal, key) => {
                 if (mapVal[1].get(key)) {
                     return mapVal[1].get(key).acv
@@ -22,7 +22,7 @@ const Piechart = (props) => {
 
                 return null
             })
-            (d3.index(props.data, d => d.closed_fiscal_quarter, d => d[props.typeKey]))
+            (d3.index(props.data, d => d.closed_fiscal_quarter, d => d.type))
 
         const color = d3.scaleOrdinal()
             .domain(series.map(d => d.key))
